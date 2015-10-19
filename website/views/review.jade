@@ -1,0 +1,120 @@
+extends layout
+
+block content
+	.pb-Md.pt-Md(data-background='{"url": "/images/hero1.jpg", "repeat": "repeat", "position": "top"}')
+		h1.container.mb-Md Write a Review!
+
+		.container.profile.ta-L
+			fieldset#SimpleReview.col-sm-6.mb-Md
+				legend Write a Simple Review
+
+				.form-group
+					label(for='Country') Country
+					input#Country.form-control(type='text', placeholder='United States of America')
+
+				.form-group
+					label(for='Thoughts') Thoughts
+					textarea#Thoughts.form-control
+
+				input#SubmitSimpleReview.btn.btn-primary.f-R(type='submit', value='Submit')
+
+			.col-sm-6
+				table.table
+					thead
+						tr
+							th Country
+							th Throughts
+							th Update
+							th Delete
+					tbody#SubmittedResults
+
+			fieldset.col-xs-12
+				legend Write a Review
+
+				.col-sm-6.col-xs-12
+					.form-group
+						label(for='Type') It's a
+						select.form-control#Type
+							option(value='country') Country
+							option(value='state/province') State/Province
+							option(value='city') City
+							option(value='attraction') Attraction
+					
+					.form-group
+						label(for='Location') Location
+						input.form-control#Location(type='text', size='50')
+
+					.form-group
+						label(for='Rating') Rating
+						input.form-control#Rating(type='number', min='0', max='5')
+
+					.form-group
+						label(for='Comments') Comments
+						textarea.form-control#Comments
+
+				.col-sm-6.col-xs-12
+					.form-group.clearfix
+						span.fw-B Interests
+
+						.col-xs-12
+							.row
+								label.checkbox-inline
+									input#Adventure(type='checkbox', value='adventure') 
+									| Adventure
+
+								label.checkbox-inline
+									input#Culture(type='checkbox', value='culture') 
+									| Culture
+
+								label.checkbox-inline
+									input#Family(type='checkbox', value='family') 
+									| Family
+
+							.row
+								label.checkbox-inline
+									input#Nightlife(type='checkbox', value='nightlife') 
+									| Nightlife
+
+								label.checkbox-inline
+									input#History(type='checkbox', value='history') 
+									| History
+								label.checkbox-inline
+									input#Museums(type='checkbox', value='museums') 
+									| Museums
+
+							.row
+								label.checkbox-inline
+									input#Exotics(type='checkbox', value='exotics') 
+									| Exotics
+
+								label.checkbox-inline
+									input#Music(type='checkbox', value='music') 
+									| Music
+
+								label.checkbox-inline
+									input#Nature(type='checkbox', value='nature') 
+									| Nature
+
+					.form-group
+						label(for='Time') I would suggest people Stay
+						input.form-control#Time(type='number')
+						
+						label.radio-inline
+							input.radio#Minutes(type='radio', name='time', value='minutes')
+							| Minute(s)
+						
+						label.radio-inline
+							input.radio#Hours(type='radio', name='time', value='minutes', checked='checked')
+							| Hour(s)
+
+						label.radio-inline
+							input.radio#Days(type='radio', name='time', value='days')
+							| Day(s)
+
+					.form-inline
+						.form-group
+							label.sr-only(for='Money') Amount to Sepnd
+							.input-group
+								.input-group-addon I would suggest spending
+								input.form-control#Money(type='text', placeholder='$40')
+								.input-group-addon here
