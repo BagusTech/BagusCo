@@ -78,6 +78,17 @@ function showSubmittedResults(){
 function submitSimpleReview(e){
 	e.preventDefault();
 
+	// Create a guid
+	function guid() {
+		function s4() {
+			return Math.floor((1 + Math.random()) * 0x10000)
+			.toString(16)
+			.substring(1);
+		}
+		return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+		s4() + '-' + s4() + s4() + s4();
+	}
+	
 	var guid = guid();
 
 	// Super basic validation - increase errorCount if any fields are blank
@@ -177,15 +188,4 @@ function updateReview(e){
 			console.log('Error: ' + response.msg);
 		}
 	})
-}
-
-// Create a guid
-function guid() {
-	function s4() {
-		return Math.floor((1 + Math.random()) * 0x10000)
-		.toString(16)
-		.substring(1);
-	}
-	return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-	s4() + '-' + s4() + s4() + s4();
 }
