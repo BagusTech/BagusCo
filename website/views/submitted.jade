@@ -5,11 +5,81 @@ block content
 		.container.profile.ta-L
 			h1 Submitted Reviews
 
-			table.table
-				thead
-					tr
-						th Country
-						th Throughts
-						th Update
-						th Delete
-				tbody#SubmittedResults
+			if data.length > 0
+				.row#SubmittedReviews
+					each item in data
+						.col-sm-6.col-xs-12
+							.profile
+								h2= item.location
+									small
+										- for (var i = 0; i < item.rating; ++i ){
+											span star&nbsp;
+										-}
+
+
+								section.col-sm-6
+									h3.mt-0 Comments
+									p= item.comments
+								.col-sm-6
+									h3.mt-0 Cost
+									span= item.cost.amount
+									| &nbsp;
+									span= item.cost.currency
+									| &nbsp;per/
+									span= item.cost.unit
+
+									h3 Length of Stay
+									span= item.stay.length
+									span= item.stay.unit
+
+								h4.c-B.bw-0.bs-S.btw-Sm.bc-G.pt-Sm Reviewers Interests
+								.col-xs-12
+									.row.checkbox
+										label.col-sm-3.col-xs-6
+											input#Adventure(type='checkbox', value='adventure', checked= item.interest.adventure, disabled)
+											| Adventure
+										label.col-sm-3.col-xs-6
+											input#Culture(type='checkbox', value='culture', checked= item.interest.culture, disabled)
+											| Culture
+										label.col-sm-3.col-xs-6
+											input#Family(type='checkbox', value='family', checked= item.interest.family, disabled)
+											| Family
+										label.col-sm-3.col-xs-6
+											input#Nightlife(type='checkbox', value='nightlife', checked= item.interest.nightlife, disabled)
+											| Nightlife
+										label.col-sm-3.col-xs-6
+											input#Architecture(type='checkbox', value='architecture', checked= item.interest.architecture, disabled)
+											| Architecture
+										label.col-sm-3.col-xs-6
+											input#History(type='checkbox', value='history', checked= item.interest.history, disabled)
+											| History
+										label.col-sm-3.col-xs-6
+											input#Food(type='checkbox', value='food', checked= item.interest.food, disabled)
+											| Food
+										label.col-sm-3.col-xs-6
+											input#Scenery(type='checkbox', value='Scenery', checked= item.interest.scenery, disabled)
+											| Scenery
+										label.col-sm-3.col-xs-6
+											input#Museums(type='checkbox', value='museums', checked= item.interest.museums, disabled)
+											| Museums
+										label.col-sm-3.col-xs-6
+											input#Outdoors(type='checkbox', value='outdoors', checked= item.interest.outdoors, disabled)
+											| Outdoors
+										label.col-sm-3.col-xs-6
+											input#Exotics(type='checkbox', value='exotics', checked= item.interest.exotics, disabled)
+											| Exotics
+										label.col-sm-3.col-xs-6
+											input#Music(type='checkbox', value='music', checked= item.interest.music, disabled)
+											| Music
+										label.col-sm-3.col-xs-6
+											input#Nature(type='checkbox', value='nature', checked= item.interest.nature, disabled)
+											| Nature
+										label.col-sm-3.col-xs-6
+											input#Sports(type='checkbox', value='sports', checked= item.interest.sports, disabled)
+											| Sports
+
+								div.clearfix
+									button.btn.btn-info.update-button.f-R.ml-Sm(value= item.Id) Update
+									button.btn.btn-danger.delete-button.f-R(value= item.Id) Delete
+			else
+				<div class="alert alert-danger" role="alert">Sorry, no results were returned!</div>

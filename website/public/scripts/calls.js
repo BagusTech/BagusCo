@@ -1,7 +1,9 @@
 $(document).ready(function(){
-	showSubmittedResults();
+	$('.delete-button').click(deleteReview);
+	$('.update-button').click(updateMode);
+	$('.cancel-update-button').click(updateMode);
 
-	$('#SubmitSimpleReview').on('click', submitSimpleReview);
+	$('#SubmitReview').on('click', submitReview);
 });
 
 var updateMode = function(e){
@@ -53,12 +55,12 @@ var updateMode = function(e){
 	}
 }
 
-function showSubmittedResults(){
+function showSubmittedReviews(){
 	var tableContent = '';
 
 	$.getJSON('/review/submitted-reviews', function(data){
 		$.each(data, function(){
-			tableContent += '<tr class="test">';
+			tableContent += '<tr>';
 			tableContent += '<td class="country">' + this.Country + '</td>';
 			tableContent += '<td class="thoughts">' + this.Thoughts + '</td>';
 			tableContent += '<td><button class="btn btn-info update-button" value="' + this.Id + '">Update</button></td>';
@@ -66,7 +68,7 @@ function showSubmittedResults(){
 			tableContent += '</tr>';
 		});
 
-		$('#SubmittedResults').html(tableContent);
+		$('#SubmittedReviews').html(tableContent);
 
 	}).done(function(){
 		$('.delete-button').click(deleteReview);
@@ -75,7 +77,7 @@ function showSubmittedResults(){
 	});
 };
 
-function submitSimpleReview(e){
+function submitReview(e){
 	e.preventDefault();
 
 	// Create a guid
@@ -93,12 +95,12 @@ function submitSimpleReview(e){
 
 	// Super basic validation - increase errorCount if any fields are blank
 	var errorCount = 0;
-	$('#SimpleReview input').each(function(){
+	$('#Review input').each(function(){
 		if($(this).val() === ''){
 			errorCount++;
 		}
 	});
-	$('#SimpleReview textarea').each(function(){
+	$('#Review textarea').each(function(){
 		if($(this).val() === ''){
 			errorCount++;
 		}
@@ -107,28 +109,57 @@ function submitSimpleReview(e){
 	if(errorCount === 0){
 		
 		// Create the Object that will be added into the table
-		var simpleReview = {
+		var Review = {
 			'Id': guid,
-			'Country': $('#Country').val(),
-			'Thoughts': $('#Thoughts').val()
+			'type': $('#Type').val(),
+			'location': $('#Location').val(),
+			'rating': $('#Rating').val(),
+			'comments': $('#Comments').val(),
+			'stay': {
+				'length': $('#Time').val(),
+				'unit': $('[name=time]:checked').val()
+			},
+			'cost': {
+				'amount': $('#Amount').val(),
+				'currency': $('#Currency').val(),
+				'unit': $('#MoneyUnit').val()
+			},
+			'interest': {
+				'adventure': $('#Adventure').prop('checked'),
+				'culture': $('#Culture').prop('checked'),
+				'family': $('#Family').prop('checked'),
+				'nightlife': $('#Nightlife').prop('checked'),
+				'architecture': $('#Architecture').prop('checked'),
+				'history': $('#History').prop('checked'),
+				'food': $('#Food').prop('checked'),
+				'scenery': $('#Scenery').prop('checked'),
+				'museums': $('#Museums').prop('checked'),
+				'outdoors': $('#Outdoors').prop('checked'),
+				'exotics': $('#Exotics').prop('checked'),
+				'music': $('#Music').prop('checked'),
+				'nature': $('#Nature').prop('checked'),
+				'sports': $('#Sports').prop('checked')
+			}
 		}
 
 		$.ajax({
 			type: 'POST',
-			data: simpleReview,
-			url: '/review/submit-simple-review',
-			dataType: 'JSON'
+			data: JSON.stringify(Review),
+			url: '/review/submit-review',
+			contentType: "application/json"
 		}).done(function(response){
 			console.log('done!');
 
 			// Check if the response message matches our success message in defined review.js
 			if(response.msg === ''){
-				// Clear out the input fields
-				$('#Country').val('');
-				$('#Thoughts').val('');
+				// Reset the form
+				$('#Review input[type=text]').val('');
+				$('#Review input[type=number]').val('');
+				$('input[type=checkbox]').prop('checked', false)
+				$('#Review textarea').val('');
 
 				// Update the table
-				showSubmittedResults();
+				//showSubmittedReviews();
 			} else {
 
 				// If something goes wrong, alert the error message
@@ -155,7 +186,7 @@ function deleteReview(e){
 			url: '/review/delete-review/' + $(this).val() 
 		}).done(function(response){
 			if(response.msg === ''){
-				showSubmittedResults();
+				showSubmittedReviews();
 			} else {
 				console.log('Error: ' + response.msg);
 			}
@@ -183,9 +214,11 @@ function updateReview(e){
 		dataType: 'JSON'
 	}).done(function(response){
 		if (response.msg === ''){
-			showSubmittedResults();
+			showSubmittedReviews();
 		} else {
 			console.log('Error: ' + response.msg);
+			alert('Failed to update, see console for error');
+			showSubmittedReviews();
 		}
 	})
 }

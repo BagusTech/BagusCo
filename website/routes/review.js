@@ -3,10 +3,27 @@ var express = require('express'),
 
 // Pages
 router.get('/submitted', function(req, res, next){
-	res.render('submitted', {
-		title: 'Submitted Reviews - Bagus',
-		description: 'Wire a review to be used in Bagus\'s latest project. These reviews will be used to help users all over the world get a better sense of what places they may want to go to based on what people with similar preferences think.'
-	});
+	var db = req.db,
+		params = {TableName : 'ReviewForm'};
+
+	db.scan(params, function(err, data){
+		if (err){
+			console.log('Error: '+ err)
+
+			res.render('submitted', {
+				title: 'Submitted Reviews - Bagus',
+				description: 'Wire a review to be used in Bagus\'s latest project. These reviews will be used to help users all over the world get a better sense of what places they may want to go to based on what people with similar preferences think.',
+				data: []
+			});
+		} else {
+			res.render('submitted', {
+				title: 'Submitted Reviews - Bagus',
+				description: 'Wire a review to be used in Bagus\'s latest project. These reviews will be used to help users all over the world get a better sense of what places they may want to go to based on what people with similar preferences think.',
+				data: data.Items
+			});
+
+		}
+	})
 });
 
 // REST calls
@@ -21,18 +38,44 @@ router.get('/submitted-reviews', function(req, res, next){
 	})
 });
 
-router.post('/submit-simple-review', function(req, res){
+router.post('/submit-review', function(req, res){
 	var db = req.db,
+		item = req.body,
 		params = {
 			TableName: 'ReviewForm',
 			Item: {
-				'Id': req.body.Id,
-				'Country': req.body.Country,
-				'Thoughts': req.body.Thoughts
+				'Id': item.Id,
+				'type': item.type,
+				'location': item.location,
+				'rating': item.rating,
+				'comments': item.comments,
+				'stay': {
+					'length': item.stay.length,
+					'unit': item.stay.unit
+				},
+				'cost': {
+					'amount': item.cost.amount,
+					'currency': item.cost.currency,
+					'unit': item.cost.unit
+				},
+				'interest': {
+					'adventure': item.interest.adventure,
+					'culture': item.interest.culture,
+					'family': item.interest.family,
+					'nightlife': item.interest.nightlife,
+					'architecture': item.interest.architecture,
+					'history': item.interest.history,
+					'food': item.interest.food,
+					'scenery': item.interest.scenery,
+					'museums': item.interest.museums,
+					'outdoors': item.interest.outdoors,
+					'exotics': item.interest.exotics,
+					'music': item.interest.music,
+					'nature': item.interest.nature,
+					'sports': item.interest.sports
+				}
 			}
 		}
-
-	console.log(req.body);
 
 	db.put(params, function(err, data) {
 		res.send((err === null) ? {msg: ''} : {msg: 'error: ' + err});
