@@ -1,4 +1,4 @@
-extends layout
+extends ..\layout
 
 block content
 	.pb-Md.pt-Md(data-background='{"url": "/images/hero1.jpg", "repeat": "repeat", "position": "top"}')
@@ -9,6 +9,17 @@ block content
 				legend Write a Review
 
 				.col-sm-6.col-xs-12
+					.row
+						.col-sm-6.col-xs-12
+							.form-group
+								label(for='Name') Name
+								input.form-control#Name(type='text', size='50', placeholder='The Arch')
+
+						.col-sm-6.col-xs-12
+							.form-group
+								label(for='Rating') Rating
+								input.form-control#Rating(type='number', min='0', max='5')
+
 					.form-group
 						label(for='Type') It's a
 						select.form-control#Type
@@ -18,12 +29,8 @@ block content
 							option(value='attraction') Attraction
 					
 					.form-group
-						label(for='Location') Location
-						input.form-control#Location(type='text', size='50')
-
-					.form-group
-						label(for='Rating') Rating
-						input.form-control#Rating(type='number', min='0', max='5')
+						label(for='Address') Address
+						input.form-control#Address(type='text', size='50')
 
 					.form-group
 						label(for='Comments') Comments
@@ -33,65 +40,64 @@ block content
 					.form-group.clearfix
 						span.fw-B Interests
 
-						.col-xs-12
-							.row.checkbox
-								label.col-sm-3.col-xs-6
-									input#Adventure(type='checkbox', value='adventure') 
-									| Adventure
-								label.col-sm-3.col-xs-6
-									input#Culture(type='checkbox', value='culture') 
-									| Culture
-								label.col-sm-3.col-xs-6
-									input#Family(type='checkbox', value='family') 
-									| Family
-								label.col-sm-3.col-xs-6
-									input#Nightlife(type='checkbox', value='nightlife') 
-									| Nightlife
-								label.col-sm-3.col-xs-6
-									input#Architecture(type='checkbox', value='architecture') 
-									| Architecture
-								label.col-sm-3.col-xs-6
-									input#History(type='checkbox', value='history') 
-									| History
-								label.col-sm-3.col-xs-6
-									input#Food(type='checkbox', value='food') 
-									| Food
-								label.col-sm-3.col-xs-6
-									input#Scenery(type='checkbox', value='Scenery') 
-									| Scenery
-								label.col-sm-3.col-xs-6
-									input#Museums(type='checkbox', value='museums') 
-									| Museums
-								label.col-sm-3.col-xs-6
-									input#Outdoors(type='checkbox', value='outdoors') 
-									| Outdoors
-								label.col-sm-3.col-xs-6
-									input#Exotics(type='checkbox', value='exotics') 
-									| Exotics
-								label.col-sm-3.col-xs-6
-									input#Music(type='checkbox', value='music') 
-									| Music
-								label.col-sm-3.col-xs-6
-									input#Nature(type='checkbox', value='nature') 
-									| Nature
-								label.col-sm-3.col-xs-6
-									input#Sports(type='checkbox', value='sports') 
-									| Sports
+						.row.checkbox
+							label.col-sm-3.col-xs-6
+								input#Adventure(type='checkbox', value='adventure') 
+								| Adventure
+							label.col-sm-3.col-xs-6
+								input#Culture(type='checkbox', value='culture') 
+								| Culture
+							label.col-sm-3.col-xs-6
+								input#Family(type='checkbox', value='family') 
+								| Family
+							label.col-sm-3.col-xs-6
+								input#Nightlife(type='checkbox', value='nightlife') 
+								| Nightlife
+							label.col-sm-3.col-xs-6
+								input#Architecture(type='checkbox', value='architecture') 
+								| Architecture
+							label.col-sm-3.col-xs-6
+								input#History(type='checkbox', value='history') 
+								| History
+							label.col-sm-3.col-xs-6
+								input#Food(type='checkbox', value='food') 
+								| Food
+							label.col-sm-3.col-xs-6
+								input#Scenery(type='checkbox', value='Scenery') 
+								| Scenery
+							label.col-sm-3.col-xs-6
+								input#Museums(type='checkbox', value='museums') 
+								| Museums
+							label.col-sm-3.col-xs-6
+								input#Outdoors(type='checkbox', value='outdoors') 
+								| Outdoors
+							label.col-sm-3.col-xs-6
+								input#Exotics(type='checkbox', value='exotics') 
+								| Exotics
+							label.col-sm-3.col-xs-6
+								input#Music(type='checkbox', value='music') 
+								| Music
+							label.col-sm-3.col-xs-6
+								input#Nature(type='checkbox', value='nature') 
+								| Nature
+							label.col-sm-3.col-xs-6
+								input#Sports(type='checkbox', value='sports') 
+								| Sports
 
 					.form-group
 						label.d-B(for='Time') I would suggest people Stay
 						input.form-control.w-A.d-Ib.mr-Sm#Time(type='number')
 						
 						label.radio-inline
-							input.radio(type='radio', name='time', value='minutes')
+							input.radio(type='radio', name='time', value='minute')
 							| Minute(s)
 						
 						label.radio-inline
-							input.radio(type='radio', name='time', value='minutes', checked='checked')
+							input.radio(type='radio', name='time', value='hour', checked='checked')
 							| Hour(s)
 
 						label.radio-inline
-							input.radio(type='radio', name='time', value='days')
+							input.radio(type='radio', name='time', value='day')
 							| Day(s)
 
 					.form-group

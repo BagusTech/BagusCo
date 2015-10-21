@@ -1,15 +1,18 @@
 var express      = require('express'),
-path         = require('path'),
-flash        = require('connect-flash'),
-favicon      = require('serve-favicon'),
-cookieParser = require('cookie-parser'),
-bodyParser   = require('body-parser'),
-session      = require('express-session'),
-routes       = require('./routes/index'),
-review       = require('./routes/review'),
-AWS          = require('aws-sdk'),
-fs           = require('fs'),
-app          = express();
+    path         = require('path'),
+    passport     = require('passport'),
+    FacebookStrategy = require('passport-facebook').Strategy,
+    flash        = require('connect-flash'),
+    favicon      = require('serve-favicon'),
+    cookieParser = require('cookie-parser'),
+    bodyParser   = require('body-parser'),
+    session      = require('express-session'),
+    routes       = require('./routes/index'),
+    review       = require('./routes/review'),
+    profile      = require('./routes/profile'),
+    AWS          = require('aws-sdk'),
+    fs           = require('fs'),
+    app          = express();
 
 //Set up the view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -37,9 +40,16 @@ app.use(function(req, res, next){
   next();
 })
 
+// required for passport
+//app.use(session({ secret: 'thisisthesecretpasswordforbagus' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
 //Set index.js to be the main router
 app.use('/', routes);
 app.use('/review', review);
+app.use('/profile', profile);
 
 // error handlers /////////////////////////////////////////////////////
 

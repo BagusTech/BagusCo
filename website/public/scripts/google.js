@@ -3,11 +3,11 @@ $(window).on('load', function(){
 })
 
 function init(){
-	if($('#Location').length > 0){
+	if($('#Address').length > 0){
 		var options = {
 				//types: ['geocode'] //document.getElementById('Type').value
 			},
-			input = document.getElementById('Location'),
+			input = document.getElementById('Address'),
 			autocomplete = new google.maps.places.Autocomplete(input, options);
 	}
 }
