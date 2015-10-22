@@ -10,13 +10,13 @@ router.get('/submitted', function(req, res, next){
 		if (err){
 			console.log('Error: '+ err)
 
-			res.render('/submitted', {
+			res.render('/review/submitted', {
 				title: 'Submitted Reviews - Bagus',
 				description: 'Wire a review to be used in Bagus\'s latest project. These reviews will be used to help users all over the world get a better sense of what places they may want to go to based on what people with similar preferences think.',
 				data: []
 			});
 		} else {
-			res.render('/submitted', {
+			res.render('/review/submitted', {
 				title: 'Submitted Reviews - Bagus',
 				description: 'Wire a review to be used in Bagus\'s latest project. These reviews will be used to help users all over the world get a better sense of what places they may want to go to based on what people with similar preferences think.',
 				data: data.Items
