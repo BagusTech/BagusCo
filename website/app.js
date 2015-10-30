@@ -48,8 +48,8 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 //Set index.js to be the main router
 app.use('/', routes);
-app.use('/review', review);
-app.use('/profile', profile);
+//app.use('/review', review);
+//app.use('/profile', profile);
 
 // error handlers /////////////////////////////////////////////////////
 

@@ -1,6 +1,12 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+	.container.text-center
+		h1= message
+		h2= error.status
+		
+		hr.small
+		br
+
+		pre.sr-only #{error.stack}
+		- console.log(error.stack)
