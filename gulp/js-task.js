@@ -19,7 +19,7 @@ module.exports = function (project, args) {
 
     if (developmentBuild) {
         inputStream = inputStream
-                                 .pipe(jscs({ esnext: true, configPath: '.jscsrc' }))
+                                 //.pipe(jscs({ esnext: true, configPath: '.jscsrc' }))
                                  .pipe(jshint())
                                  .pipe(jshint.reporter('jshint-stylish'))
                                  .pipe(jshint.reporter('fail'))

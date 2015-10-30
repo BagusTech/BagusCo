@@ -8,17 +8,39 @@
 		});
 
 		// ransomize the order of Joe, Peter and Alan on the home page
-		randomize($('.main-hero'), '.profile-wrapper');
+		randomize('.founders', '.founder');
 
-		// Set backgrounds on elements
-		$('[data-background]').each(function(){
-			var t = $(this);
-			backgroundImage(t, breakpoint.tablet)
+		$('.sidebar-nav-link').click(function(){
+			$("#menu-close").click();
+		})
 
-			$(window).on('resize', function(){
-				backgroundImage(t, breakpoint.tablet)
-			});
-		});
+		 // Closes the sidebar menu
+	    $("#menu-close").click(function(e) {
+	        e.preventDefault();
+	        $("#sidebar-wrapper").toggleClass("active");
+	    });
+
+	    // Opens the sidebar menu
+	    $("#menu-toggle").click(function(e) {
+	        e.preventDefault();
+	        $("#sidebar-wrapper").toggleClass("active");
+	    });
+
+	    // Scrolls to the selected menu item on the page
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+
 	});
 
 //////////////  Define Functions  //////////////////////
@@ -60,35 +82,11 @@
 		}
 	}
 
-	// sets the background of an element depending on the breakpoint
-	// accepts a jQuery object and an int
-	function backgroundImage(target, breakpoint){
-		if ( $(window).outerWidth() > breakpoint ){
-			var background = JSON.parse($(target).attr('data-background')),
-				style = '';
-
-			$.each(background, function(i, item){
-				if(i === 'url'){
-					target.css({"background-image": "url(" + item + ")"});
-				}
-				if(i === 'position'){
-					target.css({"background-position": item });
-				}
-				if(i === 'size'){
-					target.css({"background-size": item });
-				}
-				if(i === 'repeat'){
-					target.css({"background-repeat": item });
-				}
-			});
-		}
-	};
-
 	// Randomize: randomizes the order of targets within a container
-	// accepts a jQuery object and a selector
-	// example randomize($('.container'), '.randomize')
+	// accepts a selector for the container and a selector for the targets
+	// example randomize('.container', '.target')
 	function randomize(container, target){
-		$.each(container, function(i, item){
+		$(container).each(function(i, item){
 			var t = $(item),
 				targets = t.find(target),
 				length = targets.length,

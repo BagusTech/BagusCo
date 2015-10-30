@@ -62,7 +62,7 @@ function showSubmittedReviews(){
 		$.each(data, function(){
 			reviews += '<div class="col-sm-6 col-xs-12"><div class="profile">';
 				reviews += '<h2 class="bw-0 bbw-Sm bc-G bs-S mb-0">' + this.name + '<small class="d-Ib pb-Xs">'+ this.rating +'</small></h2>';
-				reviews += '<small class=" mb-Sm mt-Xs d-B">' + this.address + '</small>';
+				reviews += '<small class="mb-Sm mt-Xs d-B">' + this.address + '</small>';
 				
 				reviews += '<div class="row">';
 					reviews += '<section class="col-xs-12">';

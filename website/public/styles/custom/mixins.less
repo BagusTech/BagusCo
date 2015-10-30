@@ -1,0 +1,31 @@
+.clearfix{
+	clear:both;
+
+	&:before, &:after{
+		content:' ';
+		clear:both;
+		display:table;
+	}
+}
+
+.hero-bg-image(@url, @mobile-url, @color: #fff, @size: cover, @repeat: no-repeat, @attachment: fixed, @position: center center){
+	background-image:url(@mobile-url);
+	background-color: @color;
+	background-repeat: @repeat;
+	background-size: @size;
+	background-attachment: @attachment;
+	background-position: @position;
+
+	@media (min-width: @screen-sm){
+		background-image:url(@url);
+	}
+}
+
+.white-container{
+	background-color: rgba(255, 255, 255, .65);
+	padding:30px;
+
+	h2{
+		margin-top: 0;
+	}
+}

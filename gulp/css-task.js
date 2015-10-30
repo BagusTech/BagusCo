@@ -8,7 +8,7 @@ const autoprefixer = require('autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const minifyCss = require('gulp-minify-css');
 const bless = require('gulp-bless');
-const browserSync = require('browser-sync');
+//const browserSync = require('browser-sync');
 const errorHandler = require('./errorHandler');
 
 module.exports = function (project, args) {
@@ -22,7 +22,7 @@ module.exports = function (project, args) {
                .pipe(gulpif(!developmentBuild, minifyCss({ compatibility: 'ie8' })))
                .pipe(gulpif(developmentBuild, sourcemaps.write('.')))
                .pipe(gulpif(!developmentBuild, bless()))
-               .pipe(gulp.dest(project.stylesOutputDirPath))
-               .pipe(filter('**/*.css')) // don't pass source-map files to browser sync
-               .pipe(gulpif(developmentBuild, browserSync.reload({ stream: true })));
+               .pipe(gulp.dest(project.stylesOutputDirPath));
+               //.pipe(filter('**/*.css')) // don't pass source-map files to browser sync
+               //.pipe(gulpif(developmentBuild, browserSync.reload({ stream: true })));
 };

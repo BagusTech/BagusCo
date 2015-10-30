@@ -1,7 +1,7 @@
 /*jshint node:true */
 const gulp = require('gulp');
 const runSequence = require('run-sequence');
-const browserSync = require('browser-sync');
+//const browserSync = require('browser-sync');
 const path = require('path');
 const glob = require('glob');
 const ignore = require('ignore');
@@ -50,11 +50,21 @@ const themeProjects = glob.sync('website/public/*/')
                               {
                                   stylesDirPath: path.join(themeFolder, 'styles/'),
                                   stylesOutputDirPath: path.join(themeFolder, 'styles/'),
-                                  lessFilePath: path.join(themeFolder, 'styles/styles.less'),
+                                  lessFilePath: path.join(themeFolder, '/styles.less'),
                               }));
 
 //const projects = moduleProjects.concat(themeProjects);
-const projects = themeProjects;
+const project = new Project(
+        'bagusco',
+        'website/public/',
+        {
+            stylesDirPath: 'website/public/styles/',
+            stylesOutputDirPath: 'website/public/styles/',
+            lessFilePath: 'website/public/styles//styles.less',
+        }
+    );
+
+const projects = [project]
 
 if (args.verbose) {
     console.log('args', args);
@@ -62,6 +72,7 @@ if (args.verbose) {
 }
 
 projects.forEach((project) => {
+    console.log(project.name);
     gulp.task('css:' + project.name, () => doCssTask(project, args));
     gulp.task('js:' + project.name, () => doJsTask(project, args));
     gulp.task('images:' + project.name, () => doImagesTask(project, args));
@@ -77,8 +88,8 @@ function runTasksInSequence(tasks) {
     };
 }
 
-gulp.task('build', runTasksInSequence(projects.map((p) => 'build:' + p.name)));
-gulp.task('package', runTasksInSequence(moduleProjects.map((p) => 'package:' + p.name).concat(['package:themes'])));
+//gulp.task('build', runTasksInSequence(projects.map((p) => 'build:' + p.name)));
+//gulp.task('package', runTasksInSequence(moduleProjects.map((p) => 'package:' + p.name).concat(['package:themes'])));
 
 const themeTasks = themeProjects.map((project) => project.name);
 gulp.task('themes', themeTasks);
@@ -89,26 +100,26 @@ gulp.task('images:themes', themeTasks.map((taskName) => 'images:' + taskName));
 //gulp.task('pre-package:themes', runTasksInSequence([themeTasks].concat(themeBuildTasks)));
 //gulp.task('package:themes', ['pre-package:themes'], () => doPackageTask(new Project('themes', 'Website/Portals/_default'), args));
 
-const moduleTasks = moduleProjects.map((project) => project.name);
-gulp.task('modules', moduleTasks);
-gulp.task('css:modules', moduleTasks.map((taskName) => 'css:' + taskName));
-gulp.task('js:modules', moduleTasks.map((taskName) => 'js:' + taskName));
-gulp.task('images:modules', moduleTasks.map((taskName) => 'images:' + taskName));
+//const moduleTasks = moduleProjects.map((project) => project.name);
+//gulp.task('modules', moduleTasks);
+//gulp.task('css:modules', moduleTasks.map((taskName) => 'css:' + taskName));
+//gulp.task('js:modules', moduleTasks.map((taskName) => 'js:' + taskName));
+//gulp.task('images:modules', moduleTasks.map((taskName) => 'images:' + taskName));
 
 gulp.task('watch', ['default'], function(done) {
     projects.forEach((project) => {
         gulp.watch(project.lessFilesGlobs, ['css:' + project.name]);
-        gulp.watch(project.javaScriptFilesGlobs, ['js:' + project.name]);
+        //gulp.watch(project.javaScriptFilesGlobs, ['js:' + project.name]);
     });
     
-    if (args.withoutBrowserSync) {
-        done();
-        return;
-    }
+    //if (args.withoutBrowserSync) {
+    //    done();
+    //    return;
+    //}
     
-    browserSync({
-        proxy: args.url
-    });
+    //browserSync({
+    //    proxy: args.url
+    //});
 
     //// gulp.watch('Website/bin/*.dll', browserSync.reload);
     //// projects.forEach(function(project) {
