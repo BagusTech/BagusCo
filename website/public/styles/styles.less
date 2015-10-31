@@ -1,1 +1,67 @@
-@import 'custom/custom';
+// Founder specific styles
+.founder{
+	margin-bottom:30px;
+}
+
+.founder-header{
+	margin-top: 0;
+}
+
+.founder-img-wrapper{
+	width:45%;
+	float:left;
+	padding:0 15px 0 0;
+}
+
+// Story specfic styles
+#Story{background-attachment: fixed;}
+
+.story-header{
+	font-size: 4em;
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.story-container{
+	border-radius: 5px;
+	background:rgba(255, 255, 255, .9);
+	color:#333;
+	padding:30px;
+	margin-bottom: 60px;
+	font-size: 1.15em;
+}
+
+// Header Styles
+.header{
+	background-attachment: fixed;
+}
+
+// Footer Styles
+footer{
+	padding:15px 0;
+
+	a, ul{
+		color:#fff;
+	}
+
+	ul.list-inline{
+		margin:0;
+		text-align: center;
+
+		> li{
+			width: 100%
+		}
+	}
+}
+
+@media (min-width: 450px){
+	footer{
+		ul.list-inline{
+			text-align: inherit;
+
+			> li{
+				width:auto;
+			}
+		}
+	}
+}
