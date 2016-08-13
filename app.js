@@ -11,8 +11,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // App configuration ///////////////////////////////////////////////////
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json()); // needed for post requests, still figuring out what it does
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
