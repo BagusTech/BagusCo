@@ -56,7 +56,4 @@ app.use(function(err, req, res, next) {
 console.log('Stating Bagus Co Website');
 console.log('Current Environment: ' + app.get('env'));
 
-var port = normalizePort(process.env.PORT || '80');
-app.listen(port); 
-
 module.exports = app;
