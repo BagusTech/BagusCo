@@ -1,0 +1,25 @@
+extends layout.pug
+
+block content
+	.jumbotron.jumbotron-primary
+		h1 Get in Touch With Us
+		p.lead Send us an inquiry and we'd love to chat about <span>how we can help you reach your goals.</span>
+
+	.container.contact-us-content
+		.row
+			.col-xs-12.col-sm-10.col-sm-push-1.col-md-8.col-md-push-2.col-lg-6.col-lg-push-3
+				form
+					.form-group
+						label Name
+							input.form-control(placeholder='Darth Vader')
+
+					.form-group
+						label Email
+							input.form-control(type='email', placeholder='darth.vader@sith.com')
+
+					.form-group
+						label How can we help you?
+							textarea.form-control(type='email', placeholder='I am looking for someone who can develop an app to find unnecessary thermal exhaust ports...', style='height: 200px;')
+
+					.form-footer
+						button.btn.btn-primary.btn-lg Submit

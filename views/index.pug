@@ -1,0 +1,117 @@
+extends layout.pug
+
+block content
+	.jumbotron.jumbotron-primary
+		h1 Do You Love Star Wars? <span>So Do We.</span>
+		p.lead Development, design, and marketing <span>for your business and startup needs.</span>
+		a.btn.btn-default.btn-lg.btn-inverted(href='/contact-us') Contact Us
+
+	.container.our-services
+		h2 Our Services
+		.row
+			.col-xs-12.col-sm-4
+				.callout.callout-primary
+					img(alt='Development Tools', src='/img/development-tools.svg')
+					h3 Development
+					p We offer custom, mobile responsive website development to the highest web standards for a variety of purposes and languages including the following.
+
+					.visible-xs
+						ul#MoreBuild.collapse(role='tabpanel')
+							li Wordpress
+							li HTML, CSS, Javascript
+							li Node.js, Express.js
+							li React, Knockout, Angular
+							li AWS, Cloud Computing
+							li SQL &amp; NoSQL
+							li C#, ASP.NET
+							li Python
+						button.btn.btn-default.btn-inverted(data-target='#MoreBuild', data-toggle='collapse', aria-expanded='false', aria-controls='MoreBuild') View More
+			.col-xs-12.col-sm-4
+				.callout.callout-secondary
+					img(alt='Design Pen', src='/img/design-pen.svg')
+					h3 Design
+					p All our services include user experiences focused design whether it's a comprehensive website to presentations, pitches, and even video editing.
+
+					.visible-xs
+						ul#MoreDesign.collapse(role='tabpanel')
+							li Responsive Web Design
+							li User Experience
+							li User Interface
+							li User Testing
+							li Video Editing
+							li Pitch Presentation
+						button.btn.btn-default.btn-inverted(data-target='#MoreDesign', data-toggle='collapse', aria-expanded='false', aria-controls='MoreDesign') View More
+			.col-xs-12.col-sm-4
+				.callout.callout-tertiary
+					img(alt='Marketing Loudspeaker', src='/img/marketing-loudspeaker.svg')
+					h3 Marketing
+					p Our comprehensive marketing experience includes Google analytics, Google AdWords, social media marketing, SEO (search engine optimization), and more.
+
+					.visible-xs
+						ul#MoreMarketing.collapse(role='tabpanel')
+							li SEO
+							li Google Analytics
+							li Google Adwords
+							li Lead Generation
+							li Social Media Planning
+							li Social Media Marketing
+						button.btn.btn-default.btn-inverted(data-target='#MoreMarketing', data-toggle='collapse', aria-expanded='false', aria-controls='MoreMarketing') View More
+
+		.our-services--additional-services.hidden-xs
+			#ServiceDetails.collapse(role='tabpanel')
+				.row
+					.col-xs-12.col-sm-4
+						ul
+							li Wordpress
+							li HTML, CSS, Javascript
+							li Node.js, Express.js
+							li React, Knockout, Angular
+							li AWS, Cloud Computing
+							li SQL &amp; NoSQL
+							li C#, ASP.NET
+							li Python
+					.col-xs-12.col-sm-4
+						ul
+							li Responsive Web Design
+							li User Experience
+							li User Interface
+							li User Testing
+							li Video Editing
+							li Pitch Presentation
+					.col-xs-12.col-sm-4
+						ul
+							li SEO
+							li Google Analytics
+							li Google Adwords
+							li Lead Generation
+							li Social Media Planning
+							li Social Media Marketing
+			button.btn.btn-default(data-target='#ServiceDetails', data-toggle='collapse', aria-expanded='false', aria-controls='ServiceDetails') View More
+
+	.jumbotron.jumbotron-secondary
+		h2 About Us
+		.container
+			p We're a team that loves technology, innovation, and helping people meet their goals. We have experience in digital consulting, web development, the startup industry, and even the nonprofit and journalism sectors. We value quality and making sure that everything we build has the end-user in mind. Our principles guide our decisions and hour business is personal because it's about the people we serve.
+
+	#Team.container
+		h2 Our Team
+
+		.row
+			.col-xs-12.col-sm-4
+				.callout
+					img.img-circle(alt='Peter Lamming', src='/img/profile/peter.jpg')
+					h3 Peter Lamming&nbsp;
+						small Operations
+					p Peter has spend most of his career as in IT Consultant specializing in the product delivery life-cycle. He's managed teams and clients on four continents and for a number of industries including financial, telecommunications, and the Department of Defense.
+			.col-xs-12.col-sm-4
+				.callout
+					img.img-circle(alt='Alan Furth', src='/img/profile/alan.jpg')
+					h3 Alan Furth&nbsp;
+						small Design
+					p Alan has spent the last three years in the startup industry and a product manager, marketer, and designer. Prior to that he worked at an international nonprofit as a magazine editor.
+			.col-xs-12.col-sm-4
+				.callout
+					img.img-circle(alt='Joe Lisser', src='/img/profile/joe.jpg')
+					h3 Joe Lissner&nbsp;
+						small Development
+					p Joe has experience working directly with clients to build their websites including nonprofits, small businesses, and national franchises. As well as his development experience, he has a background in design and client training.

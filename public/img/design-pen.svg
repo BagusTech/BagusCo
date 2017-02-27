@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4237 1803 92 92">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-design-pen);
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-design-pen">
+      <rect x="4237" y="1803" width="92" height="92"/>
+    </clipPath>
+  </defs>
+  <g id="design-pen" class="cls-1">
+    <g id="Fountain_Pen" data-name="Fountain Pen" transform="translate(4237 1803)">
+      <path id="Path_126" data-name="Path 126" class="cls-2" d="M41.12,49.151l-2.483-2.457L63.474,27.032,36.154,0,16.283,24.575,13.8,22.118l-2.483,2.457L38.637,51.608Z" transform="translate(28.424)"/>
+      <path id="Path_127" data-name="Path 127" class="cls-2" d="M27.549,38.613a5.153,5.153,0,0,1,1.015-5.919,5.309,5.309,0,0,1,7.45,0,5.179,5.179,0,0,1,0,7.375,5.3,5.3,0,0,1-5.982,1L4.967,65.875,7.45,68.335c5.638-5.582,29.8-14.747,29.8-14.747l22.578-26.81L42,9.13,14.9,31.471S5.638,55.382,0,60.96l2.483,2.457Z" transform="translate(0 22.601)"/>
+      <rect id="Rectangle_118" data-name="Rectangle 118" class="cls-2" width="73.763" height="3.476" transform="translate(18.237 88.524)"/>
+    </g>
+  </g>
+</svg>
