@@ -11,10 +11,10 @@
   "keywords": [
     "Bagus",
     "Bagus Co.",
+    "Bagusco",
     "Joe Lissner",
     "Peter Lamming",
-    "Alan Furth",
-    ""
+    "Alan Furth"
   ],
   "author": "Joe Lissner",
   "license": "ISC",
@@ -24,8 +24,9 @@
     "debug": "~2.2.0",
     "express": "~4.13.3",
     "express-session": "~1.11.3",
-    "jade": "~1.11.0",
     "method-override": "~1.0.0",
+    "nodemailer": "^3.1.4",
+    "nodemailer-smtp-transport": "^2.7.2",
     "pug": "^2.0.0-beta11",
     "serve-favicon": "~2.3.0"
   }

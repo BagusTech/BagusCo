@@ -1,10 +1,10 @@
-var express      = require('express'),
-    path         = require('path'),
-    favicon      = require('serve-favicon'),
-    cookieParser = require('cookie-parser'),
-    bodyParser   = require('body-parser'),
-    routes       = require('./routes/index'),
-    app          = express();
+const express      = require('express'),
+      path         = require('path'),
+      favicon      = require('serve-favicon'),
+      cookieParser = require('cookie-parser'),
+      bodyParser   = require('body-parser'),
+      routes       = require('./routes/index'),
+      app          = express();
 
 //Set up the view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -25,7 +25,7 @@ app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
+    const err = new Error(`Not Found: ${req._parsedOriginalUrl.path}`);
     err.status = 404;
     next(err);
 });
@@ -52,7 +52,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-console.log('Stating Bagus Co Website');
+console.log('Stating BagusCo Website');
 console.log('Current Environment: ' + app.get('env'));
 
 module.exports = app;

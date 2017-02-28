@@ -100,10 +100,7 @@ p {
 }
 @media (min-width: 767px) {
   .form-footer {
-    text-align: right;
-  }
-  .form-footer .btn {
-    width: auto;
+    text-align: center;
   }
 }
 .callout {
